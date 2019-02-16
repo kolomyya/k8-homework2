@@ -1,0 +1,29 @@
+apiVersion: extensions/v1beta1
+kind: ReplicaSet
+metadata:
+  name: nginx-app
+  labels:
+    app: nginx-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx-app
+  template:
+    metadata:
+      labels:
+        app: nginx-app
+    spec:
+      volumes:
+      - name: app-data
+        persistentVolumeClaim:
+          claimName: app-data-claim
+      containers:
+      - name: nginx
+        image: nginx
+        volumeMounts:
+        - name: app-data
+          mountPath: /usr/share/nginx/html
+        ports:
+        - containerPort: 80
+          protocol: TCP

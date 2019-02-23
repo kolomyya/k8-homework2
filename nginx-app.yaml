@@ -16,8 +16,8 @@ spec:
     spec:
       volumes:
       - name: app-data
-        persistentVolumeClaim:
-          claimName: app-data-claim
+        hostPath: 
+          path: "/home/ubuntu/data/app-data/"
       containers:
       - name: nginx
         image: nginx

@@ -17,10 +17,12 @@ spec:
       volumes:
       - name: app-data
         hostPath: 
-          path: "/home/ubuntu/data/app-data/"
+          path: "/home/ubuntu/app-data/"
       containers:
       - name: nginx
         image: nginx
+        securityContext:
+          privileged: true
         volumeMounts:
         - name: app-data
           mountPath: /usr/share/nginx/html

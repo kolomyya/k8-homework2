@@ -12,4 +12,4 @@ spec:
   capacity:
     storage: 1Gi
   hostPath:
-    path: /data/app-data
+    path: /home/ubuntu/data/app-data
